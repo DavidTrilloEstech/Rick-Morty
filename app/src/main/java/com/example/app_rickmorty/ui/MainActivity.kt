@@ -14,7 +14,6 @@ import com.example.app_rickmorty.R
 import com.example.app_rickmorty.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
         private lateinit var appBarConfiguration: AppBarConfiguration
         private lateinit var binding: ActivityMainBinding
         private lateinit var navController: NavController
@@ -38,5 +37,4 @@ class MainActivity : AppCompatActivity() {
             return navController.navigateUp(appBarConfiguration)
                     || super.onSupportNavigateUp()
         }
-    }
 }
