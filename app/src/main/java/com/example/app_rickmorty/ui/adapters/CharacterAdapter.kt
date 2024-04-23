@@ -8,7 +8,14 @@ import com.bumptech.glide.Glide
 import com.example.app_rickmorty.databinding.VistaPersonajeBinding
 import com.example.app_rickmorty.model.data.Personajes.CharacterResult
 
-class CharacterAdapter(val context:Context) : RecyclerView.Adapter<CharacterAdapter.ViewHolder>(){
+
+
+
+class CharacterAdapter(val context:Context, private val listener : Myclick) : RecyclerView.Adapter<CharacterAdapter.ViewHolder>(){
+
+    interface Myclick{
+        fun onHolderClick(character: CharacterResult)
+    }
 
     val characters = ArrayList<CharacterResult>()
 
@@ -37,8 +44,11 @@ class CharacterAdapter(val context:Context) : RecyclerView.Adapter<CharacterAdap
         holder.binding.tvCharName.text=character.name
     }
 
-    fun refreshList(lista : ArrayList<CharacterResult>){
-        characters.clear()
-        characters.addAll(lista)
+    fun refreshList(lista: List<CharacterResult>){
+        if (!lista.isNullOrEmpty()){
+            characters.clear()
+            characters.addAll(lista)
+        }
+
     }
 }

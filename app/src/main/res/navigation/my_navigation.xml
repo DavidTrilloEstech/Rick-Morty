@@ -2,14 +2,17 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/my_navigation"
-    app:startDestination="@id/fragmentList">
-
+    app:startDestination="@id/fragmentCharList">
     <fragment
-        android:id="@+id/fragmentList"
-        android:name="com.example.app_rickmorty.ui.fragments.FragmentList"
-        android:label="FragmentList" />
+        android:id="@+id/fragmentCharList"
+        android:name="com.example.app_rickmorty.ui.fragments.FragmentCharList"
+        android:label="FragmentCharList" >
+        <action
+            android:id="@+id/action_fragmentCharList_to_fragmentCharDetail"
+            app:destination="@id/fragmentCharDetail" />
+    </fragment>
     <fragment
-        android:id="@+id/fragmentDetail"
-        android:name="com.example.app_rickmorty.ui.fragments.FragmentDetail"
-        android:label="FragmentDetail" />
+        android:id="@+id/fragmentCharDetail"
+        android:name="com.example.app_rickmorty.ui.fragments.FragmentCharDetail"
+        android:label="FragmentCharDetail" />
 </navigation>
