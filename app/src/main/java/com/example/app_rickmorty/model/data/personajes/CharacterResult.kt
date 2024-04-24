@@ -1,8 +1,9 @@
-package com.example.app_rickmorty.model.data.Personajes
+package com.example.app_rickmorty.model.data.personajes
+
 
 data class CharacterResult(
     val created: String,
-    val episode: String,
+    val episode: List<String>,
     val gender: String,
     val id: Int,
     var image: String,

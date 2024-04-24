@@ -6,7 +6,7 @@
     <fragment
         android:id="@+id/fragmentCharList"
         android:name="com.example.app_rickmorty.ui.fragments.FragmentCharList"
-        android:label="FragmentCharList" >
+        android:label="Inicio">
         <action
             android:id="@+id/action_fragmentCharList_to_fragmentCharDetail"
             app:destination="@id/fragmentCharDetail" />

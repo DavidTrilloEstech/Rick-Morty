@@ -6,18 +6,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.app_rickmorty.databinding.VistaPersonajeBinding
-import com.example.app_rickmorty.model.data.Personajes.CharacterResult
+import com.example.app_rickmorty.model.data.personajes.CharacterResult
 
 
 
 
-class CharacterAdapter(val context:Context, private val listener : Myclick) : RecyclerView.Adapter<CharacterAdapter.ViewHolder>(){
+class CharacterAdapter(private val context:Context, private val listener: Myclick, private val characters: List<CharacterResult>) : RecyclerView.Adapter<CharacterAdapter.ViewHolder>(){
 
     interface Myclick{
         fun onHolderClick(character: CharacterResult)
     }
 
-    val characters = ArrayList<CharacterResult>()
+//    private val characters = ArrayList<CharacterResult>()
 
     inner class ViewHolder(val binding: VistaPersonajeBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -42,13 +42,14 @@ class CharacterAdapter(val context:Context, private val listener : Myclick) : Re
             .into(holder.binding.imgChar)
 
         holder.binding.tvCharName.text=character.name
-    }
 
-    fun refreshList(lista: List<CharacterResult>){
-        if (!lista.isNullOrEmpty()){
-            characters.clear()
-            characters.addAll(lista)
+        holder.itemView.setOnClickListener {
+            listener.onHolderClick(character)
         }
-
     }
+
+//    fun refreshList(lista: List<CharacterResult>){
+//            characters.clear()
+//            characters.addAll(lista)
+//    }
 }

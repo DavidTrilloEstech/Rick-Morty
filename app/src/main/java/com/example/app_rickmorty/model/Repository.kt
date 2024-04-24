@@ -1,6 +1,6 @@
 package com.example.app_rickmorty.model
 
-import com.example.app_rickmorty.model.data.Personajes.Character
+import com.example.app_rickmorty.model.data.personajes.Character
 import com.example.app_rickmorty.model.retrofit.RetrofitHelper
 import retrofit2.Response
 
