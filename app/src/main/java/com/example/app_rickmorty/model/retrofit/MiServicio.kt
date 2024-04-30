@@ -1,5 +1,6 @@
 package com.example.app_rickmorty.model.retrofit
 
+import com.example.app_rickmorty.model.data.Episodios.Episodios
 import com.example.app_rickmorty.model.data.Localizacion.Localizacion
 import com.example.app_rickmorty.model.data.personajes.Character
 import retrofit2.Response
@@ -9,6 +10,9 @@ interface MiServicio {
     @GET("character")
     suspend fun obtenerPersonajes(): Response<Character>
 
-    @GET("location")
-    suspend fun obtenerLocalizacion(): Response<Localizacion>
+    @GET("episode")
+    suspend fun obtenerEpisodio(): Response<Episodios>
+
+
+
 }
