@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
@@ -12,6 +13,7 @@ import com.example.app_rickmorty.databinding.FragmentCharacterDetailBinding
 import com.example.app_rickmorty.model.data.personajes.CharacterResult
 import com.example.app_rickmorty.ui.CharacterModel
 import com.example.app_rickmorty.ui.MainActivity
+import com.example.app_rickmorty.ui.adapters.EpisodeAdapter
 
 class FragmentCharDetail : Fragment() {
     private  lateinit var binding: FragmentCharacterDetailBinding
@@ -47,7 +49,6 @@ class FragmentCharDetail : Fragment() {
             binding.tvSpecies.text = character.type
         }
 
-
         if (character.gender== "Female"){
             binding.imgGender.setImageResource(R.drawable.baseline_female_24)
         }else if (character.gender=="Male"){
@@ -55,6 +56,9 @@ class FragmentCharDetail : Fragment() {
         }
 
         Glide.with(this).load(character.image).into(binding.imgChar)
+
+        binding.recyclerView2.adapter=EpisodeAdapter(character.episode)
+
 
         (requireActivity() as MainActivity).supportActionBar?.title = character.name
     }

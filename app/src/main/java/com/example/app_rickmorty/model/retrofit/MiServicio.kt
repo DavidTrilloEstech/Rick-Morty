@@ -13,6 +13,7 @@ interface MiServicio {
     @GET("episode")
     suspend fun obtenerEpisodio(): Response<Episodios>
 
-
+    @GET("location")
+    suspend fun obtenerLocation(): Response<Localizacion>
 
 }
