@@ -15,11 +15,11 @@ class CharacterModel : ViewModel() {
 
     private val resultLiveData= MutableLiveData<CharacterResult>()
 
-    fun getLista():MutableLiveData<Character>{
+    fun getPagina(page:Int):MutableLiveData<Character>{
 
         viewModelScope.launch {
 
-            val respuesta = repositorio.obtenerPersonajes()
+            val respuesta = repositorio.obtenerPersonajes(page)
 
             val code = respuesta.code()
 
@@ -37,4 +37,20 @@ class CharacterModel : ViewModel() {
         resultLiveData.value=character
     }
     fun getCharacter()=resultLiveData
+
+    fun getCharByName(nombre : String){
+        viewModelScope.launch {
+
+            val respuesta = repositorio.obtenerPersanjePorNombre(nombre)
+
+            val code = respuesta.code()
+
+            if (code == 200){
+
+                characterLiveData.value=respuesta.body()
+            }
+
+
+        }
+    }
 }

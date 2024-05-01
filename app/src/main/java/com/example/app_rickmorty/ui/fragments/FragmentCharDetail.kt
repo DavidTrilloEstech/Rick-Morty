@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.app_rickmorty.R
 import com.example.app_rickmorty.databinding.FragmentCharacterDetailBinding
@@ -34,14 +35,24 @@ class FragmentCharDetail : Fragment() {
         viewModel.getCharacter().observe(viewLifecycleOwner){
             fillCharacterData(it)
         }
+
+        binding.tvOrigin.setOnClickListener{
+            findNavController().navigateUp()
+        }
+
+        binding.tvLocation.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun fillCharacterData(character: CharacterResult) {
         binding.tvNombre.text = character.name
 
-        binding.tvStatus.text = "Status: " + character.status
+        binding.tvStatus.text = character.status
 
         binding.tvOrigin.text = character.origin.name
+
+        binding.tvLocation.text = character.location.name
 
         if (character.type.isNullOrEmpty()){
             binding.tvSpecies.text = character.species
