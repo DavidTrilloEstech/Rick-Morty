@@ -65,7 +65,7 @@ class CharacterModel : ViewModel() {
             val respuesta = repositorio.obtenerLocation(id)
 
             if (respuesta.code()==200){
-                locationLiveData.value= respuesta.body()?.locationResults?.get(0)
+                locationLiveData.value= respuesta.body()
             }
         }
         return locationLiveData

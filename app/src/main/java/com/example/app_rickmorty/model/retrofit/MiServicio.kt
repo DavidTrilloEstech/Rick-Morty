@@ -2,6 +2,7 @@ package com.example.app_rickmorty.model.retrofit
 
 import com.example.app_rickmorty.model.data.Episodios.Episodios
 import com.example.app_rickmorty.model.data.Localizacion.Localizacion
+import com.example.app_rickmorty.model.data.Localizacion.LocationResult
 import com.example.app_rickmorty.model.data.personajes.Character
 import retrofit2.Response
 import retrofit2.http.GET
@@ -25,6 +26,6 @@ interface MiServicio {
     @GET("location/{id}")
     suspend fun obtenerLocation(
         @Path("id") id : Int
-    ): Response<Localizacion>
+    ): Response<LocationResult>
 
 }
