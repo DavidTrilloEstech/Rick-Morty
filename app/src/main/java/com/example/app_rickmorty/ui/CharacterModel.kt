@@ -6,6 +6,9 @@ import com.example.app_rickmorty.model.Repository
 import com.example.app_rickmorty.model.data.personajes.CharacterResult
 import com.example.app_rickmorty.model.data.personajes.Character
 import androidx.lifecycle.ViewModel
+import com.example.app_rickmorty.model.data.Localizacion.Localizacion
+import com.example.app_rickmorty.model.data.Localizacion.LocationResult
+import com.example.app_rickmorty.model.data.personajes.Location
 import kotlinx.coroutines.launch
 
 class CharacterModel : ViewModel() {
@@ -14,6 +17,8 @@ class CharacterModel : ViewModel() {
     private  val characterLiveData= MutableLiveData<Character>()
 
     private val resultLiveData= MutableLiveData<CharacterResult>()
+
+    private val locationLiveData = MutableLiveData<LocationResult>()
 
     fun getPagina(page:Int):MutableLiveData<Character>{
 
@@ -53,4 +58,18 @@ class CharacterModel : ViewModel() {
 
         }
     }
+
+    fun setLocation(id : Int):MutableLiveData<LocationResult>{
+        viewModelScope.launch{
+
+            val respuesta = repositorio.obtenerLocation(id)
+
+            if (respuesta.code()==200){
+                locationLiveData.value= respuesta.body()?.locationResults?.get(0)
+            }
+        }
+        return locationLiveData
+    }
+
+    fun getLocation()=locationLiveData
 }

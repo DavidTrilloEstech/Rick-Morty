@@ -16,4 +16,15 @@ object RetrofitHelper {
     val miServicio : MiServicio by lazy{
         builder.create(MiServicio::class.java)
     }
+
+    fun crearBuilder(url : String) : Retrofit{
+        val constructor= Retrofit.Builder()
+        .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        return  constructor
+    }
+
+
 }

@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.example.app_rickmorty.R
 import com.example.app_rickmorty.databinding.FragmentCharacterDetailBinding
 import com.example.app_rickmorty.model.data.personajes.CharacterResult
+import com.example.app_rickmorty.model.retrofit.RetrofitHelper
 import com.example.app_rickmorty.ui.CharacterModel
 import com.example.app_rickmorty.ui.MainActivity
 import com.example.app_rickmorty.ui.adapters.EpisodeAdapter
@@ -19,6 +20,8 @@ import com.example.app_rickmorty.ui.adapters.EpisodeAdapter
 class FragmentCharDetail : Fragment() {
     private  lateinit var binding: FragmentCharacterDetailBinding
     private val viewModel by activityViewModels<CharacterModel>()
+    private var location =""
+    private var origin =""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,15 +40,28 @@ class FragmentCharDetail : Fragment() {
         }
 
         binding.tvOrigin.setOnClickListener{
-            findNavController().navigateUp()
+            navegacionLocation(origin)
+        }
+
+        binding.imgInfoOrigin.setOnClickListener{
+            navegacionLocation(origin)
+
         }
 
         binding.tvLocation.setOnClickListener {
-            findNavController().navigateUp()
+            navegacionLocation(location)
+        }
+
+        binding.imgInfoLocation.setOnClickListener {
+            navegacionLocation(location)
         }
     }
 
     private fun fillCharacterData(character: CharacterResult) {
+        location=character.location.url
+
+        origin=character.origin.url
+
         binding.tvNombre.text = character.name
 
         binding.tvStatus.text = character.status
@@ -70,7 +86,18 @@ class FragmentCharDetail : Fragment() {
 
         binding.recyclerView2.adapter=EpisodeAdapter(character.episode)
 
+        Toast.makeText(requireContext(), character.episode.get(0), Toast.LENGTH_SHORT).show()
+
 
         (requireActivity() as MainActivity).supportActionBar?.title = character.name
+    }
+
+    private fun navegacionLocation(locationUrl : String){
+        if (!locationUrl.isNullOrEmpty()){
+            viewModel.setLocation(locationUrl.substring(41).toInt())
+            findNavController().navigate(R.id.action_fragmentCharDetail_to_fragmentLocation)
+        }
+
+
     }
 }
