@@ -21,6 +21,6 @@ class EpisodeAdapter (val listaCap : List<String>): RecyclerView.Adapter<Episode
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val episode =listaCap[position]
 
-        holder.binding.textView.text=episode
+        holder.binding.textView.text="Episodio " + episode.substring(40)
     }
 }

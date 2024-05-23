@@ -22,5 +22,9 @@
     <fragment
         android:id="@+id/fragmentLocation"
         android:name="com.example.app_rickmorty.ui.fragments.FragmentLocation"
-        android:label="FragmentLocation" />
+        android:label="FragmentLocation" >
+        <action
+            android:id="@+id/action_fragmentLocation_to_fragmentCharDetail"
+            app:destination="@id/fragmentCharDetail" />
+    </fragment>
 </navigation>

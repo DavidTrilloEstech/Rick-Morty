@@ -11,4 +11,6 @@ class Repository {
     suspend fun obtenerPersanjePorNombre(nombre : String) = RetrofitHelper.miServicio.obtenerPersonajePorNombre(nombre)
 
     suspend fun obtenerLocation(id : Int) = RetrofitHelper.miServicio.obtenerLocation(id)
+
+    suspend fun obtenerPersonajesPorId(id : String) = RetrofitHelper.miServicio.obtenerPersonajesPorId(id)
 }

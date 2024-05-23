@@ -4,6 +4,7 @@ import com.example.app_rickmorty.model.data.Episodios.Episodios
 import com.example.app_rickmorty.model.data.Localizacion.Localizacion
 import com.example.app_rickmorty.model.data.Localizacion.LocationResult
 import com.example.app_rickmorty.model.data.personajes.Character
+import com.example.app_rickmorty.model.data.personajes.CharacterResult
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -14,6 +15,11 @@ interface MiServicio {
     suspend fun obtenerPersonaje(
         @Query("page") page: Int
     ) : Response<Character>
+
+    @GET("character/{id}")
+    suspend fun obtenerPersonajesPorId(
+        @Path("id") id : String
+    ): Response<List<CharacterResult>>
 
     @GET("character")
     suspend fun obtenerPersonajePorNombre(

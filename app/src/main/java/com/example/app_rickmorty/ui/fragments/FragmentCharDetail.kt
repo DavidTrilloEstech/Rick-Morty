@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.app_rickmorty.R
 import com.example.app_rickmorty.databinding.FragmentCharacterDetailBinding
@@ -43,21 +43,15 @@ class FragmentCharDetail : Fragment() {
             navegacionLocation(origin)
         }
 
-        binding.imgInfoOrigin.setOnClickListener{
-            navegacionLocation(origin)
-
-        }
-
         binding.tvLocation.setOnClickListener {
             navegacionLocation(location)
         }
 
-        binding.imgInfoLocation.setOnClickListener {
-            navegacionLocation(location)
-        }
     }
 
     private fun fillCharacterData(character: CharacterResult) {
+        binding.recyclerView2.layoutManager = LinearLayoutManager(requireContext())
+
         location=character.location.url
 
         origin=character.origin.url
@@ -85,8 +79,6 @@ class FragmentCharDetail : Fragment() {
         Glide.with(this).load(character.image).into(binding.imgChar)
 
         binding.recyclerView2.adapter=EpisodeAdapter(character.episode)
-
-        Toast.makeText(requireContext(), character.episode.get(0), Toast.LENGTH_SHORT).show()
 
 
         (requireActivity() as MainActivity).supportActionBar?.title = character.name
