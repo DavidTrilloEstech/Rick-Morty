@@ -6,6 +6,7 @@ import com.example.app_rickmorty.model.Repository
 import com.example.app_rickmorty.model.data.personajes.CharacterResult
 import com.example.app_rickmorty.model.data.personajes.Character
 import androidx.lifecycle.ViewModel
+import com.example.app_rickmorty.model.data.Episodios.EpisodeResult
 import com.example.app_rickmorty.model.data.Localizacion.Localizacion
 import com.example.app_rickmorty.model.data.Localizacion.LocationResult
 import com.example.app_rickmorty.model.data.personajes.Location
@@ -16,7 +17,7 @@ class CharacterModel : ViewModel() {
 
     private  val characterLiveData= MutableLiveData<Character>()
 
-    private val characterResultLiveData = MutableLiveData<CharacterResult>()
+    private val episodeResultLiveData = MutableLiveData<EpisodeResult>()
 
     private val resultLiveData= MutableLiveData<CharacterResult>()
 
@@ -90,4 +91,15 @@ class CharacterModel : ViewModel() {
 
     fun getLocation()=locationLiveData
 
+    fun getEpisode(id: Int) : MutableLiveData<EpisodeResult>{
+        viewModelScope.launch{
+
+            val respuesta = repositorio.obtenerEpisodio(id)
+
+            if (respuesta.code()==200){
+                episodeResultLiveData.value= respuesta.body()
+            }
+        }
+        return episodeResultLiveData
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.app_rickmorty.model.retrofit
 
+import com.example.app_rickmorty.model.data.Episodios.EpisodeResult
 import com.example.app_rickmorty.model.data.Episodios.Episodios
 import com.example.app_rickmorty.model.data.Localizacion.Localizacion
 import com.example.app_rickmorty.model.data.Localizacion.LocationResult
@@ -26,12 +27,13 @@ interface MiServicio {
         @Query("name") name: String
     ) : Response<Character>
 
-    @GET("episode")
-    suspend fun obtenerEpisodio(): Response<Episodios>
-
     @GET("location/{id}")
     suspend fun obtenerLocation(
         @Path("id") id : Int
     ): Response<LocationResult>
 
+    @GET("episode/{id}")
+    suspend fun obtenerEpisodio(
+        @Path("id") id: Int
+    ): Response<EpisodeResult>
 }

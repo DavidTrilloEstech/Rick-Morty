@@ -78,7 +78,12 @@ class FragmentCharDetail : Fragment() {
 
         Glide.with(this).load(character.image).into(binding.imgChar)
 
-        binding.recyclerView2.adapter=EpisodeAdapter(character.episode)
+        binding.recyclerView2.adapter=EpisodeAdapter(character.episode, object  : EpisodeAdapter.Myclick{
+            override fun onHolderClick(episode: String) {
+                viewModel.getEpisode(episode.toInt())
+            }
+
+        })
 
 
         (requireActivity() as MainActivity).supportActionBar?.title = character.name
