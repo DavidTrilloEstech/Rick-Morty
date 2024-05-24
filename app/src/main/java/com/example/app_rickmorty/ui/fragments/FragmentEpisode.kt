@@ -75,7 +75,7 @@ class FragmentEpisode : Fragment() {
                 CharacterAdapter(requireContext(), object : CharacterAdapter.Myclick {
                     override fun onHolderClick(character: CharacterResult) {
                         viewModel.setCharacter(character)
-                        findNavController().navigate(R.id.action_fragmentLocation_to_fragmentCharDetail)
+                        findNavController().navigate(R.id.action_fragmentEpisode_to_fragmentCharDetail)
                     }
                 }, it)
         }
