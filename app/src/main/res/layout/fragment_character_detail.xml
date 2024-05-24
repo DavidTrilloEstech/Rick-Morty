@@ -85,7 +85,7 @@
         android:id="@+id/tv_origin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:maxWidth="200dp"
         android:text="TextView"
         android:textSize="20sp"
@@ -97,7 +97,7 @@
         android:id="@+id/tv_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:maxWidth="200dp"
         android:text="TextView"
         android:textSize="20sp"
@@ -111,6 +111,7 @@
         android:layout_height="wrap_content"
         android:text="Species:"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_species"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_species" />
@@ -128,6 +129,7 @@
         android:layout_height="wrap_content"
         android:text="STATUS:"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_status"
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="@+id/tv_status" />
 
@@ -137,6 +139,7 @@
         android:layout_height="wrap_content"
         android:text="Origin:"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_origin"
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="@+id/tv_origin" />
 
@@ -146,6 +149,7 @@
         android:layout_height="wrap_content"
         android:text="Localition:"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_location"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="@+id/tv_location" />
 
@@ -153,7 +157,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="Lista de episodios"
         android:textSize="20sp"
         android:textStyle="bold"

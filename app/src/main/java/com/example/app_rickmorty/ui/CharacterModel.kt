@@ -102,4 +102,6 @@ class CharacterModel : ViewModel() {
         }
         return episodeResultLiveData
     }
+
+    fun setEpisode()=episodeResultLiveData
 }
